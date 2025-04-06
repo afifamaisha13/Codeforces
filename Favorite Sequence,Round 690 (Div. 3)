@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+void solve(){
+
+    int n;
+    cin>>n;
+    vector<int>v(n);
+    for(int i=0;i<n;i++)
+    cin>>v[i];
+
+    int l=0,h=n-1;
+    vector<int>ans;
+    while(l<=h){
+        if(l==h){
+        ans.push_back(v[l]);
+    
+    }
+    else{
+        ans.push_back(v[l]);
+        ans.push_back(v[h]);
+    }
+        l++;
+        h--;
+
+    }
+
+    for(auto x:ans)
+    cout<<x<<" ";
+
+    cout<<endl;
+
+}
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        solve();
+    }
+}
+
+
