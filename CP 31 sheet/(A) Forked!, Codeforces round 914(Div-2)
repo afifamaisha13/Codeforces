@@ -1,0 +1,78 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long 
+vector<int>divisor(int n){
+    vector<int>v;
+    for(int i=1;i<=sqrt(n);i++){
+        if(n%i==0){
+            v.push_back(i);
+        if((n/i)!=i)
+        v.push_back(n/i);
+        }
+    }
+    sort(v.begin(),v.end());
+    return v;
+}
+
+int gcd(int a,int b){
+    if(b==0)
+    return a;
+    else
+    return gcd(b,a%b);
+}
+
+int lcm(int a,int b){
+    return (a*b)/gcd(a,b);
+}
+
+bool palindrome(int n){
+    int x=n;
+    int sum=0;
+    while(n!=0){
+        int r=n%10;
+        sum=(sum*10)+r;
+        n=n/10;
+    }
+    if(sum==x)
+    return true;
+    else
+    return false;
+}
+
+void solve(){
+  ll a,b;
+  cin>>a>>b;
+  ll Kx,Ky,Qx,Qy;
+  cin>>Kx>>Ky;
+  cin>>Qx>>Qy;
+vector<ll>dx={a,a,-a,-a,b,-b,b,-b};
+vector<ll>dy={b,-b,b,-b,a,a,-a,-a};
+
+set<pair<ll,ll>>pkx,pqx;
+
+for(ll i=0;i<8;i++){
+    pkx.insert({Kx+dx[i],Ky+dy[i]});
+    pqx.insert({Qx+dx[i],Qy+dy[i]});
+}
+ll c=0;
+ for(auto x:pkx){
+ if(pqx.find(x)!=pqx.end())
+c++;
+ }
+
+ cout<<c<<endl;
+}
+
+int main(){
+   ios_base::sync_with_stdio (0);
+   cin.tie (0);
+   cout.tie (0);
+    int t;
+    cin>>t;
+    while(t--){
+        solve();
+    }
+
+    
+}
