@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+void solve(){
+  ll x;
+  cin>>x;
+  string s;
+  cin>>s;
+  
+  
+    ll ans=1,c=1;
+   for(int i=1;i<x;i++){
+     if(s[i]!=s[i-1])
+     ans=1;
+     else
+     ans++;
+     
+     c=max(ans,c);
+     
+   }
+   
+   cout<<c+1<<endl;
+ }
+
+    
+    
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        solve();
+    }
+   
+}
+
+
