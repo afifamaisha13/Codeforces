@@ -1,0 +1,63 @@
+#include <bits/stdc++.h> // Includes all standard C++ headers
+using namespace std;
+#define ll long long
+
+// Function to solve a single test case
+void solve() {
+    int n, k, x;
+    cin >> n >> k >> x;
+
+    // Case 1: If x is not 1, we can use only 1s to sum up to n
+    if (x != 1) {
+        cout << "YES" << endl;
+        cout << n << endl; // n elements of 1
+        for (int i = 1; i <= n; i++) {
+            cout << 1 << " ";
+        }
+        cout << endl;
+    }
+
+    // Case 2: x == 1 but we can still use 2s and n is even
+    else if (n % 2 == 0 && k >= 2) {
+        cout << "YES" << endl;
+        cout << n / 2 << endl; // number of 2s needed to sum to n
+        for (int i = 1; i <= n / 2; i++) {
+            cout << 2 << " ";
+        }
+        cout << endl;
+    }
+
+    // Case 3: x == 1, n divisible by 3, and 3 is allowed (k >= 3)
+    else if (n % 3 == 0 && k >= 3) {
+        cout << "YES" << endl;
+        cout << n / 3 << endl; // number of 3s needed
+        for (int i = 1; i <= n / 3; i++) {
+            cout << 3 << " ";
+        }
+        cout << endl;
+    }
+
+    // Case 4: x == 1, n is odd, and we can use 3 and 2s (k >= 3)
+    else if (n % 2 && k >= 3) {
+        cout << "YES" << endl;
+        cout << (n - 1) / 2 << endl; // One 3 and the rest 2s to make up n
+        cout << 3 << " ";            // Start with 3
+        for (int i = 0; i < (n - 1) / 2 - 1; i++) {
+            cout << 2 << " ";
+        }
+        cout << endl;
+    }
+
+    // Case 5: No valid combination found
+    else {
+        cout << "NO" << endl;
+    }
+}
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        solve(); // Solve each test case
+    }
+}
